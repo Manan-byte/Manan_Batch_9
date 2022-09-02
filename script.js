@@ -40,10 +40,19 @@ function renderToHtml() {
   // mapping array to html element
   absensi_data.forEach((e, i) => {
     root.innerHTML += `
-    <div class="card">  
+    <div class="card" draggable="true" ondragend="handleDelete(${i})">  
       <span>  ${i + 1}. &nbsp; ${e.nama_lengkap} </span>
       <span>  ${e.waktu} ${e.tanggal} </span>
     </div>
     `;
   });
+}
+
+// delete function
+function handleDelete(index) {
+  // delete 1 data dari array
+  absensi_data.splice(index, 1);
+
+  // render kembali data dalam array ke html
+  renderToHtml();
 }
